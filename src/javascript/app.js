@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import createFighters from './components/fightersView';
 import fighterService from './services/fightersService';
 

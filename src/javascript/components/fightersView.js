@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import createElement from '../helpers/domHelper';
 import { createFightersSelector } from './fighterSelector';
 

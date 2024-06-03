@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import createElement from '../../helpers/domHelper';
 
 function getModalContainer() {
@@ -18,6 +19,7 @@ function createHeader(title, onClose) {
 
     const close = () => {
         hideModal();
+        window.location.reload();
         onClose();
     };
     closeButton.addEventListener('click', close);

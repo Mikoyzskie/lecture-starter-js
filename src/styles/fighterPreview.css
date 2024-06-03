@@ -1,13 +1,60 @@
+@font-face {
+    font-family: 'Martyric';
+    src: url('martyric.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .fighter-preview___root {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 250px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 350px;
+    position: relative;
 }
 
 .fighter-preview___right {
-  align-items: flex-end;
+    align-items: flex-start;
 }
 
 .fighter-preview___left {
-  align-items: flex-start;
+    align-items: flex-end;
+}
+
+.fighter-preview___right img {
+    transform: rotateY(180deg);
+}
+
+.fighterName {
+    font-family: 'Martyric', sans-serif;
+    font-size: 100px;
+    line-height: 100%;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: -webkit-linear-gradient(#fff800, #ff0000, #ff0000, #000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #fff;
+}
+
+.fighterStats {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.fighterStats p {
+    color: #fff;
+    font-size: 30px;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 900;
+    background: -webkit-linear-gradient(#fff800, #ff0000, #000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #fff;
 }
