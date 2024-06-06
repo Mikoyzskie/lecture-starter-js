@@ -29,19 +29,19 @@ export function criticalHit(fighter) {
     return fighter.attack * 2;
 }
 
-export function getDamage(attacker, defender, isBlockExist) {
-    let attackPower;
-    if (isBlockExist) {
-        attackPower = getHitPower(attacker) - getBlockPower(defender);
+export function getDamage(attacker, defender, isBlocked) {
+    let damage;
+    if (isBlocked) {
+        damage = getHitPower(attacker) - getBlockPower(defender);
     } else {
-        attackPower = getHitPower(attacker);
+        damage = getHitPower(attacker);
     }
 
-    if (attackPower < 0) {
+    if (damage < 0) {
         return 0;
     }
 
-    return attackPower;
+    return damage;
 }
 
 let firstFighterBlockActive = false;
@@ -85,16 +85,24 @@ export async function fight(firstFighter, secondFighter) {
         document.addEventListener('keydown', e => {
             switch (e.code) {
                 case PlayerOneAttack:
-                    if (!firstFighterBlockActive && !e.repeat) {
+                    if (!secondFighterBlockActive && !e.repeat) {
                         const damage = getDamage(firstFighter, secondFighter, secondFighterBlockActive);
-                        secondFighterHealth -= damage;
+                        if (secondFighterHealth - damage < 0) {
+                            secondFighterHealth -= secondFighterHealth;
+                        } else {
+                            secondFighterHealth -= damage;
+                        }
                     }
 
                     break;
                 case PlayerTwoAttack:
-                    if (!secondFighterBlockActive && !e.repeat) {
+                    if (!firstFighterBlockActive && !e.repeat) {
                         const damage = getDamage(secondFighter, firstFighter, firstFighterBlockActive);
-                        firstFighterHealth -= damage;
+                        if (firstFighterHealth - damage < 0) {
+                            firstFighterHealth -= firstFighterHealth;
+                        } else {
+                            firstFighterHealth -= damage;
+                        }
                     }
                     break;
 
